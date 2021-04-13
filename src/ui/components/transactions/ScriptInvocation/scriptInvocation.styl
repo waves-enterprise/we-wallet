@@ -1,0 +1,31 @@
+@import '../../../styles/colors.styl';
+@import '../../pages/styles/transactions.styl';
+
+.scriptInvocationTransactionCard
+  @extends .transaction-card
+
+.scriptInvocationCard_collapsed
+  .origin
+    display: none;
+
+.scriptInvocationTxIcon
+  @extends .txIcon
+
+.scriptInvocationTxScrollBox
+  @extends .txScrollBox
+  flex-grow: 0;
+
+.cardContent
+  padding-left: 0;
+
+.origin
+  padding-left: 58px;
+
+.dataScript pre
+  white-space: pre;
+
+.functionTitle
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: $black;
