@@ -12,7 +12,7 @@ export const ConditionsAndTerms = () => {
 
         <h3 className="headline4 margin-main-big-top margin-main">1. Agreement</h3>
         <div className="margin-main">
-            These Waves Enterprise Keeper Terms of Use ("Terms") govern your use of a plug-in that extends the functionality of web
+            These Waves Enterprise Wallet Terms of Use ("Terms") govern your use of a plug-in that extends the functionality of web
             browsers and allows you to keep secret phrases (“SEED”) from your Waves accounts in the Waves Client and
             approve transactions without entering your SEED on third-parties websites and applications (“Software”). Software is
             operated by Waves Platform AG (“Company”, "us", "we", or "our").

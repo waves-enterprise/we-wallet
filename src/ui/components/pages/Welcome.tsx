@@ -25,8 +25,8 @@ export class Welcome extends React.Component<IWelcomeProps> {
                     <Trans i18nKey='welcome.getStarted'>Get Started</Trans>
                 </Button>
                 <div className="basic500 body3">
-                    <div><Trans i18nKey='welcome.info'>Waves Enterprise Keeper — is the safest way to interact with third-party web resources with Waves-integrated functionality or DApps.</Trans></div>
-                    <div><Trans i18nKey='welcome.info2'>Using Waves Enterprise Keeper, you can sign transactions and remain safe from malicious sites.</Trans></div>
+                    <div><Trans i18nKey='welcome.info'>Waves Enterprise Wallet — is the safest way to interact with third-party web resources with WE-integrated functionality or DApps.</Trans></div>
+                    <div><Trans i18nKey='welcome.info2'>Using Waves Enterprise Wallet, you can sign transactions and remain safe from malicious sites.</Trans></div>
                 </div>
             </div>
         );

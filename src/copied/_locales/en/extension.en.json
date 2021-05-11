@@ -113,7 +113,7 @@
     },
     "info": {
         "joinUs": "Join the Waves Enterprise Community",
-        "keepUp": "Waves Enterprise Keeper — is the safest way to interact with third-party web resources with Waves-integrated functionality or DApps. Using Waves Enterprise Keeper, you can sign transactions and remain safe from malicious sites."
+        "keepUp": "Waves Enterprise Wallet — is the safest way to interact with third-party web resources with Waves-integrated functionality or DApps. Using Waves Enterprise Keeper, you can sign transactions and remain safe from malicious sites."
     },
     "langsSettings": {
         "confirm": "Confirm",
@@ -158,7 +158,7 @@
         "create": "Continue",
         "createPassword": "Create a password",
         "notMatch": "Passwords does not match",
-        "passinfo": "The password you entered will be stored locally. If you change device or lose your password, you will have to repeat the process of adding accounts to Waves Enterprise Keeper. Waves does not store your passwords.",
+        "passinfo": "The password you entered will be stored locally. If you change device or lose your password, you will have to repeat the process of adding accounts to Waves Enterprise Wallet. Waves Enterprise does not store your passwords.",
         "protect": "Protect Your Account",
         "smallPass": "Password is too short"
     },
@@ -277,7 +277,7 @@
         "requestRejected": "Request has not been signed",
         "signAccessHost": "wants to access your Waves Address",
         "signAccessInfo": "The application will have access to your Waves address but will not expose your SEED or private key. Never enter your secret phrase (SEED) on any website you are redirected to.",
-        "signAccessWaves": "Sign in with Waves",
+        "signAccessWaves": "Sign in with Waves Enterprise",
         "signButton": "Sign",
         "someError": "Something went wrong",
         "switchAccount": "Switch account",
@@ -387,7 +387,7 @@
         "setSponsored": "Set Sponsorship",
         "showAll": "Show all",
         "showTransactions": "Show transactions",
-        "signAccessWaves": "Sign in with Waves",
+        "signAccessWaves": "Sign in with Waves Enterprise",
         "signCustomRequest": "Sign a request",
         "signMatcherRequest": "Sign a request to the Matcher",
         "signRequest": "Sign a request to the Coinomat",
@@ -426,7 +426,7 @@
     },
     "welcome": {
         "getStarted": "Get Started",
-        "info": "Waves Enterprise Keeper — is the safest way to interact with third-party web resources with Waves-integrated functionality or DApps.",
-        "info2": "Using Waves Enterprise Keeper, you can sign transactions and remain safe from malicious sites."
+        "info": "Waves Enterprise Wallet — is the safest way to interact with third-party web resources with Waves-integrated functionality or DApps.",
+        "info2": "Using Waves Enterprise Wallet, you can sign transactions and remain safe from malicious sites."
     }
 }

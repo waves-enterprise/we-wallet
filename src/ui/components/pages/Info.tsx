@@ -13,7 +13,7 @@ export class Info extends React.Component {
 
             <div className="margin-main basic500">
                 <Trans i18nKey='info.keepUp'>
-                    Waves Enterprise Keeper — is the safest way to interact with third-party web resources with Waves-integrated functionality or DApps. Using Waves Enterprise Keeper, you can sign transactions and remain safe from malicious sites.
+                    Waves Enterprise Wallet — is the safest way to interact with third-party web resources with Waves-integrated functionality or DApps. Using Waves Enterprise Keeper, you can sign transactions and remain safe from malicious sites.
                 </Trans>
             </div>
 

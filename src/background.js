@@ -568,9 +568,26 @@ class BackgroundService extends EventEmitter {
             return signedTx
         }
 
+        const signTransaction = async (data) => {
+            const { type, tx } = data
+            const JsSDK = initJsSDK()
+            const selectedWallet = getSelectedWallet()
+            const seed = JsSDK.Seed.fromExistingPhrase(selectedWallet.user.seed);
+            const signedTx = await JsSDK.API.Node.transactions.sign(type, tx, seed.keyPair)
+            return signedTx
+        }
+
         const api = {
+            auth: async (data, options) => {
+                return await newMessage(data, 'auth', options, false)
+            },
+
             signAtomicTransaction: async (data) => {
                 return await signAtomicTransaction(data)
+            },
+
+            signTransaction: async (data) => {
+                return await signTransaction(data)
             },
 
             // signOrder: async (data, options) => {

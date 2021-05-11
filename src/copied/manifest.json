@@ -62,7 +62,7 @@
       "210": "images/icon_210.png",
       "270": "images/icon_270.png"
     },
-    "default_title": "Waves Enterprise Keeper",
+    "default_title": "Waves Enterprise Wallet",
     "default_popup": "popup.html"
   },
   "content_scripts": [
