@@ -28,8 +28,8 @@ export const DEFAULT_CONFIG = {
     NETWORKS: [ 'mainnet', 'testnet', 'custom' ],
     NETWORK_CONFIG: {
         "testnet": {
-            "code": "V",
-            "server": "https://hoover.welocal.dev/node-0/",
+            "code": "",
+            "server": "",
             "matcher": "",
             "authServiceAddress": "",
             "serviceToken": ""
@@ -41,6 +41,13 @@ export const DEFAULT_CONFIG = {
             "authServiceAddress": "https://client.wavesenterprise.com/authServiceAddress/",
             "serviceToken": "4zgcvfCYhwTzfemJsTuQU9c7SCTe8vSFt8a5CAJ5G7AdzGaxNxKzVuH8Dzf8sest"
         },
+        // "mainnet": {
+        //     "code": "V",
+        //     "server": "https://carter.welocal.dev/node-0/",
+        //     "matcher": "",
+        //     "authServiceAddress": "https://carter.welocal.dev/authServiceAddress/",
+        //     "serviceToken": "4zgcvfCYhwTzfemJsTuQU9c7SCTe8vSFt8a5CAJ5G7AdzGaxNxKzVuH8Dzf8sest"
+        // },
         // "stagenet": {
         //     "code": "V",
         //     "server": "https://hoover.welocal.dev/node-0",

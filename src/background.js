@@ -524,29 +524,49 @@ class BackgroundService extends EventEmitter {
             return wallets.find(w => w.user.address === selectedAccount.address)
         }
 
-        const initJsSDK = () => {
+        const initJsSDK = async () => {
             const { selectedAccount } = this.getState();
             const wallets = this.walletController.getWalletsByNetwork(selectedAccount.network)
             const selectedWallet = wallets.find(w => w.user.address === selectedAccount.address)
             const networks = this.networkController.getNetworks()
             const currentNetwork = networks.find(n => n.name === selectedWallet.user.network)
-            const { code, server } = currentNetwork
+            const { code, server, authServiceAddress, serviceToken } = currentNetwork
             const jsSDKConfig = {
                 ...MAINNET_CONFIG,
                 nodeAddress: server,
                 crypto: 'waves',
                 networkByte: code.charCodeAt(0)
             }
+            let fetchInstance = window.fetch
+            if (serviceToken && authServiceAddress) {
+                const response = await window.fetch(`${authServiceAddress}/v1/auth/token`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `bearer ${serviceToken}`
+                    }
+                })
+                const { access_token: accessToken } = await response.json()
+                fetchInstance = (url, data) => {
+                    const headers = data && data.headers ? {...data.headers} : {}
+                    return window.fetch(url, {
+                        ...data,
+                        headers: {
+                            ...headers,
+                            'Authorization': `bearer ${accessToken}`
+                        }
+                    })
+                }
+            }
             const JsSDK = create({
                 initialConfiguration: jsSDKConfig,
-                fetchInstance: fetch
+                fetchInstance: fetchInstance
             });
             return JsSDK
         }
 
         const signAtomicTransaction = async (data) => {
             const { transactions, fee } = data
-            const JsSDK = initJsSDK()
+            const JsSDK = await initJsSDK()
             const selectedWallet = getSelectedWallet()
             const seed = JsSDK.Seed.fromExistingPhrase(selectedWallet.user.seed);
             const signedTransactions = await Promise.all(transactions.map(async txData => {
@@ -570,16 +590,48 @@ class BackgroundService extends EventEmitter {
 
         const signTransaction = async (data) => {
             const { type, tx } = data
-            const JsSDK = initJsSDK()
+            const JsSDK = await initJsSDK()
             const selectedWallet = getSelectedWallet()
             const seed = JsSDK.Seed.fromExistingPhrase(selectedWallet.user.seed);
             const signedTx = await JsSDK.API.Node.transactions.sign(type, tx, seed.keyPair)
             return signedTx
         }
 
+        const getTxId = async (data) => {
+            const { type, tx } = data
+            const JsSDK = await initJsSDK()
+            const selectedWallet = getSelectedWallet()
+            const seed = JsSDK.Seed.fromExistingPhrase(selectedWallet.user.seed);
+            const txId = await JsSDK.API.Node.transactions.getTxId(type, tx, seed.keyPair)
+            return txId
+        }
+
+        const broadcastAtomic = async (txs, atomicFee) => {
+            const JsSDK = await initJsSDK()
+            const selectedWallet = getSelectedWallet()
+            const seed = JsSDK.Seed.fromExistingPhrase(selectedWallet.user.seed)
+            const atomicBody = {
+                sender: seed.address,
+                fee: atomicFee,
+                timestamp: Date.now()
+            }
+            return JsSDK.API.Node.transactions.broadcastAtomic(atomicBody, txs, seed.keyPair);
+        }
+
+        const broadcast = async (type, tx) => {
+            const JsSDK = await initJsSDK()
+            const selectedWallet = getSelectedWallet()
+            const seed = JsSDK.Seed.fromExistingPhrase(selectedWallet.user.seed)
+            return JsSDK.API.Node.transactions.broadcastFromClientAddress(type, tx, seed.keyPair);
+        }
+
         const api = {
             auth: async (data, options) => {
                 return await newMessage(data, 'auth', options, false)
+            },
+
+            getTxId(data) {
+                return getTxId(data)
             },
 
             signAtomicTransaction: async (data) => {
@@ -588,6 +640,14 @@ class BackgroundService extends EventEmitter {
 
             signTransaction: async (data) => {
                 return await signTransaction(data)
+            },
+
+            broadcast (type, tx) {
+                return broadcast(type, tx)
+            },
+
+            broadcastAtomic (txs) {
+                return broadcastAtomic(txs)
             },
 
             // signOrder: async (data, options) => {
