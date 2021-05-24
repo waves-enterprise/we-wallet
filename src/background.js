@@ -597,8 +597,7 @@ class BackgroundService extends EventEmitter {
             return signedTx
         }
 
-        const getTxId = async (data) => {
-            const { type, tx } = data
+        const getTxId = async (type, tx) => {
             const JsSDK = await initJsSDK()
             const selectedWallet = getSelectedWallet()
             const seed = JsSDK.Seed.fromExistingPhrase(selectedWallet.user.seed);
@@ -630,8 +629,8 @@ class BackgroundService extends EventEmitter {
                 return await newMessage(data, 'auth', options, false)
             },
 
-            getTxId(data) {
-                return getTxId(data)
+            getTxId(type, tx) {
+                return getTxId(type, tx)
             },
 
             signAtomicTransaction: async (data) => {
@@ -646,8 +645,8 @@ class BackgroundService extends EventEmitter {
                 return broadcast(type, tx)
             },
 
-            broadcastAtomic (txs) {
-                return broadcastAtomic(txs)
+            broadcastAtomic (txs, fee) {
+                return broadcastAtomic(txs, fee)
             },
 
             // signOrder: async (data, options) => {
