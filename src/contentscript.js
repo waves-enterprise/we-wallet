@@ -45,8 +45,8 @@ function injectBundle() {
 
 function setupConnection() {
     const pageStream = new LocalMessageDuplexStream({
-        name: 'waves_keeper_content',
-        target: 'waves_keeper_page',
+        name: 'we_wallet_content',
+        target: 'we_wallet_page',
     });
 
     const pluginPort = extension.runtime.connect({name: 'contentscript'});

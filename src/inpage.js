@@ -60,8 +60,8 @@ async function setupInpageApi() {
     global.WEWallet = global.Waves = new Proxy(wavesApp, proxyApi);
 
     const connectionStream = new LocalMessageDuplexStream({
-        name: 'waves_keeper_page',
-        target: 'waves_keeper_content',
+        name: 'we_wallet_page',
+        target: 'we_wallet_content',
     });
 
     const eventEmitter = new EventEmitter();
