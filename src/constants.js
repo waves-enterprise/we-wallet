@@ -1,6 +1,6 @@
 export const WAVESKEEPER_DEBUG = process.env.NODE_ENV !== 'production';
 
-export const CONFIG_URL = 'https://raw.githubusercontent.com/wavesplatform/waves-client-config/master/waves_keeper_blacklist.json';
+export const CONFIG_URL = 'https://raw.githubusercontent.com/waves-enterprise/client-configs/main/we_wallet_config.json';
 
 export const allowMatcher = ['dex.tokenomica.com', 'vfa.tokenomica.com'];
 
@@ -23,7 +23,7 @@ export const STATUS = {
 
 export const DEFAULT_CONFIG = {
     CONFIG: {
-        update_ms: 30000,
+        update_ms: 60000,
     },
     NETWORKS: [ 'mainnet', 'testnet', 'custom' ],
     NETWORK_CONFIG: {

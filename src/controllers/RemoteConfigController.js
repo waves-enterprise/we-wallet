@@ -119,9 +119,12 @@ export class RemoteConfigController {
     }
 
     fetchConfig() {
-        return fetch(CONFIG_URL)
-            .then(resp => resp.text())
-            .then(txt => JSON.parse(txt));
+        return fetch(CONFIG_URL + `?v=${Date.now()}`, {
+            headers : {
+                'Accept': 'application/json'
+            }
+        })
+        .then(resp => resp.json())
     }
 
     updateState(state = {}) {
@@ -130,37 +133,38 @@ export class RemoteConfigController {
     }
 
     async _getConfig() {
-        // try {
-        //     const {
-        //         blacklist = [],
-        //         whitelist = [],
-        //         networks = DEFAULT_CONFIG.NETWORKS,
-        //         network_config = DEFAULT_CONFIG.NETWORK_CONFIG,
-        //         messages_config = DEFAULT_CONFIG.MESSAGES_CONFIG,
-        //         idle = DEFAULT_CONFIG.IDLE,
-        //         pack_config = DEFAULT_CONFIG.PACK_CONFIG,
-        //     } = await this.fetchConfig();
-        //
-        //     this.updateState({
-        //         blacklist,
-        //         whitelist,
-        //         config: {
-        //             idle,
-        //             networks,
-        //             network_config,
-        //             messages_config,
-        //             pack_config,
-        //         },
-        //         status: STATUS.UPDATED
-        //     })
-        // } catch (e) {
-        //     this.updateState({ status: STATUS.ERROR });
-        // }
-        //
-        // clearTimeout(this._timer);
-        //
-        // this._timer = setTimeout(
-        //     () => this._getConfig(), DEFAULT_CONFIG.CONFIG.update_ms
-        // );
+        try {
+            const {
+                blacklist = [],
+                whitelist = [],
+                networks = DEFAULT_CONFIG.NETWORKS,
+                network_config = DEFAULT_CONFIG.NETWORK_CONFIG,
+                messages_config = DEFAULT_CONFIG.MESSAGES_CONFIG,
+                idle = DEFAULT_CONFIG.IDLE,
+                pack_config = DEFAULT_CONFIG.PACK_CONFIG,
+            } = await this.fetchConfig();
+
+            this.updateState({
+                blacklist,
+                whitelist,
+                config: {
+                    idle,
+                    networks,
+                    network_config,
+                    messages_config,
+                    pack_config,
+                },
+                status: STATUS.UPDATED
+            })
+        } catch (e) {
+            console.log('Cannot get remote config:', e.message)
+            this.updateState({ status: STATUS.ERROR });
+        }
+
+        clearTimeout(this._timer);
+
+        this._timer = setTimeout(
+            () => this._getConfig(), DEFAULT_CONFIG.CONFIG.update_ms
+        );
     }
 }
