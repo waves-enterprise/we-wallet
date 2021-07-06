@@ -687,18 +687,18 @@ class BackgroundService extends EventEmitter {
             // verifyCustomData: async (data) => {
             //     return waves.verifyCustomData(data);
             // },
-            notification: async (data) => {
-                const state = this.getState();
-                const { selectedAccount, initialized } = state;
-
-                if (!selectedAccount) {
-                    throw !initialized ? ERRORS.INIT_KEEPER() : ERRORS.EMPTY_KEEPER();
-                }
-
-                await this.validatePermission(origin);
-
-                return await newNotification(data);
-            },
+            // notification: async (data) => {
+            //     const state = this.getState();
+            //     const { selectedAccount, initialized } = state;
+            //
+            //     if (!selectedAccount) {
+            //         throw !initialized ? ERRORS.INIT_KEEPER() : ERRORS.EMPTY_KEEPER();
+            //     }
+            //
+            //     await this.validatePermission(origin);
+            //
+            //     return await newNotification(data);
+            // },
             //pairing: async (data, from) => await newMessage(data, 'pairing', from, false),
 
             publicState: async () => {
