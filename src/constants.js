@@ -39,7 +39,7 @@ export const DEFAULT_CONFIG = {
             "server": "https://client.wavesenterprise.com/node-0/",
             "matcher": "",
             "authServiceAddress": "https://client.wavesenterprise.com/authServiceAddress/",
-            "serviceToken": "4zgcvfCYhwTzfemJsTuQU9c7SCTe8vSFt8a5CAJ5G7AdzGaxNxKzVuH8Dzf8sest"
+            "serviceToken": "we_wallet_token"
         },
         // "mainnet": {
         //     "code": "V",
@@ -49,8 +49,8 @@ export const DEFAULT_CONFIG = {
         //     "serviceToken": "4zgcvfCYhwTzfemJsTuQU9c7SCTe8vSFt8a5CAJ5G7AdzGaxNxKzVuH8Dzf8sest"
         // },
         // "stagenet": {
-        //     "code": "V",
-        //     "server": "https://hoover.welocal.dev/node-0",
+        //     "code": "",
+        //     "server": "",
         //     "matcher": ""
         // },
         "custom": {

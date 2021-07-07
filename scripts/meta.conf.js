@@ -17,11 +17,7 @@ module.exports = (BUILD_FOLDER, DIST_FOLDER, version) => {
                         "storage",
                         "unlimitedStorage",
                         "clipboardWrite",
-                        "idle",
-                        "activeTab",
-                        "webRequest",
-                        "notifications",
-                        "tabs"
+                        "idle"
                     ]
                 },
                 remove: ['applications']
@@ -42,10 +38,6 @@ module.exports = (BUILD_FOLDER, DIST_FOLDER, version) => {
                         "unlimitedStorage",
                         "clipboardWrite",
                         "idle",
-                        "activeTab",
-                        "webRequest",
-                        "notifications",
-                        "tabs",
                         "background"
                     ]
                 },
@@ -66,11 +58,7 @@ module.exports = (BUILD_FOLDER, DIST_FOLDER, version) => {
                         "storage",
                         "unlimitedStorage",
                         "clipboardWrite",
-                        "idle",
-                        "activeTab",
-                        "webRequest",
-                        "notifications",
-                        "tabs"
+                        "idle"
                     ]
                 },
                 remove: []
@@ -93,9 +81,7 @@ module.exports = (BUILD_FOLDER, DIST_FOLDER, version) => {
                         "unlimitedStorage",
                         "clipboardWrite",
                         "clipboardRead",
-                        "activeTab",
-                        "idle",
-                        "tabs"
+                        "idle"
                     ],
                     'background.scripts': ['background.js']
                 },
