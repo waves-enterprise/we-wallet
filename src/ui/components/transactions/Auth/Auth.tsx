@@ -37,7 +37,7 @@ export class Auth extends SignClass {
                     <Trans i18nKey='sign.auth'>Auth</Trans>
                 </ApproveBtn>
 
-                <TransactionWallet account={this.props.selectedAccount} onSelect={this.props.selectAccount}/>
+                {/*<TransactionWallet account={this.props.selectedAccount} onSelect={this.props.selectAccount}/>*/}
             </div>
         </div>
     }

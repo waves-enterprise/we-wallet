@@ -16,7 +16,6 @@ On browser pages that operate under the http/https (not worked local pages with 
 - `signAtomicTransaction`
 - `broadcast`
 - `broadcastAtomic`
-- ``
 
 All methods, operate asynchronously and return Promises.
 

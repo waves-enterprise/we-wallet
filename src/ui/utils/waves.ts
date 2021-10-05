@@ -14,7 +14,7 @@ export function getExplorerUrls(network: string, address: string) {
         activeAddressLink: null,
     };
 
-    const activeAddressLink = `https://client.wavesenterprise.com/explorer/transactions/filters?txsTypes=3&txsTypes=4&txsTypes=5&txsTypes=6&txsTypes=8&txsTypes=9&txsTypes=11&txsTypes=14&query=${address}&queryGroup=in_addresses_author`
+    const activeAddressLink = `https://client.wavesenterprise.com/explorer/transactions/filters?txsTypes=3&txsTypes=4&txsTypes=5&txsTypes=6&txsTypes=8&txsTypes=9&txsTypes=11&txsTypes=14&query=${address}&queryGroup=in_participant`
     const walletLink = `https://client.wavesenterprise.com/explorer/transactions/filters?txsTypes=users&query=${address}&queryGroup=in_addresses&selectedUserAssetId=WEST`
 
     switch (network) {

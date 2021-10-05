@@ -24,7 +24,7 @@ class ForgotPasswordComponent extends React.Component {
             </div>
             <div className={styles.buttonMargin}>
                 <Button className="margin4" onClick={this.onClickHandler} type='warning'>
-                    <Trans i18nKey='forgotPassword.restore'>Restore all</Trans>
+                    <Trans i18nKey='forgotPassword.restore'>Delete all and restore</Trans>
                 </Button>
             </div>
             <div className={styles.tryAgain}>

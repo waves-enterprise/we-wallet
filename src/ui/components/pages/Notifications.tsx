@@ -37,48 +37,48 @@ const NotificationItem = ({ notification }) => (
 
 @translate(I18N_NAME_SPACE)
 class NotificationsComponent extends React.Component {
-    
+
     readonly state = {} as any;
     readonly props;
-    
+
     closeHandler = (e) => {
         this._deleteMessages(null);
         this.props.closeNotificationWindow();
     };
-    
+
     toListHandler = () => {
         this._deleteMessages(null).then(
             () => this.props.setTab(PAGES.MESSAGES_LIST)
         );
     };
-    
+
     toggleCanShowHandler = (e) => {
         const canUse = e.target.checked;
         this.props.setShowNotification({ origin: this.state.origin, canUse });
     };
-    
+
     nextHandler = (e) => {
         const nextNotification = this.state.notifications.filter(([item]) => item.origin !== this.state.origin)[0];
         this._deleteMessages(nextNotification || null);
     };
-    
+
     selectAccountHandler = () => this.props.setTab(PAGES.CHANGE_TX_ACCOUNT);
-    
+
     componentDidCatch(error, info) {
         this.toListHandler();
     }
-    
+
     render() {
         const { activeNotification, showToList, hasNotifications, showClose, loading } = this.state;
-        
+
         if (loading) {
             return <Intro/>;
         }
-        
-        
+
+
         return (
             <div className={`${styles.messageList} ${styles.messageListInner}`}>
-                
+
                 <div className={styles.messageListScrollBox}>
                     {
                         activeNotification
@@ -87,7 +87,7 @@ class NotificationsComponent extends React.Component {
                                 )
                             )
                     }
-                    
+
                     <div className={`margin-main-big margin-main-big-top flex ${styles.allowNotification}`}>
                         <Input id='checkbox_noshow' type={'checkbox'} checked={this.state.canShowNotify}
                                onChange={this.toggleCanShowHandler}/>
@@ -96,7 +96,7 @@ class NotificationsComponent extends React.Component {
                         </label>
                     </div>
                 </div>
-                
+
                 <div className={`${styles.notificationButtons} buttons-wrapper`}>
                     {
                         showToList &&
@@ -104,24 +104,24 @@ class NotificationsComponent extends React.Component {
                             <Trans i18nKey='notifications.toListBtn'>Notifications</Trans>
                         </Button>
                     }
-                        
+
                         {
                             hasNotifications && showToList &&
                             <div className={styles.buttonsSeparator}/>
                         }
-                    
+
                     {
                         hasNotifications &&
                         <Button type={BUTTON_TYPE.GENERAL} onClick={this.nextHandler}>
                             <Trans i18nKey='notifications.nextBtn'>Next</Trans>
                         </Button>
                     }
-    
+
                         {
                             (showClose && (hasNotifications || showToList)) &&
                             <div className={styles.buttonsSeparator}/>
                         }
-                    
+
                     {
                         showClose &&
                         <Button onClick={this.closeHandler}>
@@ -129,31 +129,31 @@ class NotificationsComponent extends React.Component {
                         </Button>
                     }
                 </div>
-                
+
                 <div className={styles.walletWrapper}>
                     <TransactionWallet onSelect={this.selectAccountHandler}
                                        account={this.props.selectedAccount}
                                        hideButton={false}/>
                 </div>
-            
+
             </div>
         );
     }
-    
+
     _deleteMessages(nexActive) {
         return this.props.deleteNotifications({
             ids: this.state.activeNotification.map(({ id }) => id),
             next: nexActive
         });
     }
-    
+
     static getDerivedStateFromProps(props, state) {
         const { origins, activeNotification, messages, notifications } = props;
         if (!activeNotification && notifications.length) {
             props.setTab(PAGES.MESSAGES_LIST);
             return { loading: true };
         }
-        
+
         const origin = activeNotification[0].origin;
         const perms = origins[origin];
         const useNotifications = perms.find((item) => item && item.type === 'useNotifications');
@@ -163,7 +163,7 @@ class NotificationsComponent extends React.Component {
         const hasMessages = messages.length > 0;
         const hasNotifications = notifications.filter(([item]) => item.origin !== origin).length > 0;
         const showToList = hasMessages || hasNotifications && notifications.length > 2;
-        
+
         return {
             canShowNotify,
             messages,
