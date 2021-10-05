@@ -1,4 +1,4 @@
-# Waves Enterprise Wallet 1.0.0
+# Waves Enterprise Wallet 1.0.1
 
 WE Wallet is an extension that allows users to securely interact with WE-enabled web services from the Chrome browser.
 
