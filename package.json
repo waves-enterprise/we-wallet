@@ -1,10 +1,10 @@
 {
-  "name": "waveskeeper",
+  "name": "we-wallet",
   "version": "1.0.1",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:wavesplatform/waveskeeper.git"
+    "url": "git+https://gitlab.wvservices.com/waves-enterprise/we-keeper.git"
   },
   "license": "ISC",
   "scripts": {
