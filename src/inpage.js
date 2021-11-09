@@ -57,7 +57,7 @@ async function setupInpageApi() {
         }
     };
 
-    global.WEWallet = global.Waves = new Proxy(wavesApp, proxyApi);
+    global.WEWallet = new Proxy(wavesApp, proxyApi);
 
     const connectionStream = new LocalMessageDuplexStream({
         name: 'we_wallet_page',
@@ -96,7 +96,7 @@ async function setupInpageApi() {
     cbs = {};
     Object.assign(wavesApi, inpageApi);
     wavesAppDef.resolve(wavesApi);
-    global.WEWallet = global.Waves = wavesApi;
+    global.WEWallet = wavesApi;
     setupClickInterceptor(inpageApi);
 }
 
